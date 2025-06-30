@@ -11,8 +11,8 @@
 
 class NumberArrayCompressor {
   constructor() {
-    // Пользовательский алфавит, похожий на base64, для лучшего ASCII-представления
-    this.alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+    // Пользовательский алфавит использующий доступные ASCII-символы
+    this.alphabet = (Array.from({length: 126 - 33}, (_, i) => String.fromCharCode(i+33))).filter(char=>!',;'.includes(char)).join('');
     this.base = this.alphabet.length; // 64
   }
 
